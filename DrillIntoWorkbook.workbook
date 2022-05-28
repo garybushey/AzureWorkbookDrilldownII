@@ -1,0 +1,51 @@
+{
+  "version": "Notebook/1.0",
+  "items": [
+    {
+      "type": 1,
+      "content": {
+        "json": "## Drill into workbook\n---\n\nThis is the workbook that accepts the drill request from the Drilldown workbook"
+      },
+      "name": "text - 2"
+    },
+    {
+      "type": 9,
+      "content": {
+        "version": "KqlParameterItem/1.0",
+        "parameters": [
+          {
+            "id": "1d3729cb-b6e7-49d4-9159-9558b5d19856",
+            "version": "KqlParameterItem/1.0",
+            "name": "TableName",
+            "label": "Table Name",
+            "type": 1,
+            "value": "*",
+            "timeContext": {
+              "durationMs": 86400000
+            }
+          }
+        ],
+        "style": "pills",
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "parameters - 2"
+    },
+    {
+      "type": 3,
+      "content": {
+        "version": "KqlItem/1.0",
+        "query": "union withsource=_TableName {TableName}\n| summarize Count=count() by _TableName\n| where _TableName != \"ThreatIntelligenceIndicator\"\n| render barchart",
+        "size": 1,
+        "queryType": 0,
+        "resourceType": "microsoft.operationalinsights/workspaces"
+      },
+      "name": "query - 2"
+    }
+  ],
+  "fallbackResourceIds": [
+    "/subscriptions/9790d913-b5da-460d-b167-ac985d5f3b83/resourcegroups/azuresentinel/providers/microsoft.operationalinsights/workspaces/gabazuresentinel"
+  ],
+  "fromTemplateId": "sentinel-UserWorkbook",
+  "$schema": "https://github.com/Microsoft/Application-Insights-Workbooks/blob/master/schema/workbook.json"
+}
